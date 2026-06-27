@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero" id="about">
+    <div class="container hero-grid">
+        <div class="hero-text-box">
+            <div class="status-badge anim-up">
+                <span class="status-dot"></span> Available for new opportunities
+            </div>
+            
+            <h1 class="display-text anim-up">{{ profile.name }}</h1>
+            <h2 class="hero-role anim-up" style="font-family: 'Syne'; font-weight: 600;">{{ profile.role }}</h2>
+            <p class="hero-desc anim-up">Cyber Security student with hands-on experience in Vulnerability Assessment &amp; Penetration Testing (VAPT), Web Application Security Testing, Malware Analysis, and Digital Forensics. Passionate about Offensive Security and continuously improving practical skills through cybersecurity labs, projects, and Capture The Flag (CTF) challenges.</p>
+            
+            <div class="hero-actions anim-up">
+                <a href="#work" class="btn-primary magnetic">Explore Works</a>
+                <a href="{{ profile.resume_link }}" target="_blank" class="btn-secondary magnetic"><i class="fa-solid fa-download"></i> Download CV</a>
+            </div>
+        </div>
+        
+        <div class="hero-img-box anim-fade">
+            <div class="img-frame">
+                <img src="{{ url_for('static', filename='image/Profil.png') }}" alt="{{ profile.name }}" class="hero-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="expertise">
+    <div class="container about-grid">
+        <div class="content-column">
+            <div class="section-header">
+                <span class="section-num">01</span>
+                <h2 class="section-title">Tech Stack</h2>
+            </div>
+            <div class="skills-container">
+                {% for skill in skills %}
+                <span class="skill-tag">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="content-column">
+            <div class="section-header">
+                <span class="section-num">02</span>
+                <h2 class="section-title">Core Services</h2>
+            </div>
+            <div class="services-list">
+                {% for service in services %}
+                <div class="clean-card">
+                    <i class="fa-solid {{ service.icon }} card-icon"></i>
+                    <h3 class="card-title">{{ service.title }}</h3>
+                    <p class="card-desc">{{ service.desc }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" style="background: rgba(255,255,255,0.01);" id="background">
+    <div class="container about-grid">
+        <div class="content-column">
+            <div class="section-header">
+                <span class="section-num">03</span>
+                <h2 class="section-title">Experience</h2>
+            </div>
+            <div class="experience-list">
+                {% for exp in experience %}
+                <div class="clean-card timeline-card">
+                    <div class="timeline-year">{{ exp.year }}</div>
+                    <h3 class="card-title">{{ exp.role }}</h3>
+                    <p class="card-desc">{{ exp.company }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="content-column">
+            <div class="section-header">
+                <span class="section-num">04</span>
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="experience-list">
+                {% for edu in education %}
+                <div class="clean-card timeline-card">
+                    <div class="timeline-year">{{ edu.year }}</div>
+                    {% if edu.degree %}
+                    <h3 class="card-title">{{ edu.degree }}</h3>
+                    {% endif %}
+                    <p class="card-desc">{{ edu.school }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="work">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-num">05</span>
+            <h2 class="section-title">Selected Works</h2>
+        </div>
+        
+        <div class="filter-container anim-up">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Cyber Security">Cyber Security</button>
+            <button class="filter-btn" data-filter="Server">Server</button>
+            <button class="filter-btn" data-filter="Full-Stack">Full-Stack</button>
+            <button class="filter-btn" data-filter="Game">Game</button>
+            <button class="filter-btn" data-filter="Automation">Automation</button>
+        </div>
+        
+        <div class="works-list">
+            <div class="work-list-header">
+                <div class="w-col">Project Title</div>
+                <div class="w-col">Category</div>
+                <div class="w-col" style="text-align: right;">Year</div>
+            </div>
+            
+            {% for project in projects %}
+            {% if project.github_link %}
+            <a href="{{ project.github_link }}" target="_blank" class="work-list-item work-item" data-category="{{ project.category }}">
+                <div class="w-col w-title">{{ project.title }}</div>
+                <div class="w-col w-category">{{ project.category }}</div>
+                <div class="w-col w-year" style="text-align: right;">
+                    {{ project.year }} 
+                    <i class="fa-solid fa-arrow-up-right-from-square w-icon" style="margin-left: 10px;"></i>
+                </div>
+            </a>
+            {% else %}
+            <div class="work-list-item work-item" data-category="{{ project.category }}">
+                <div class="w-col w-title">{{ project.title }}</div>
+                <div class="w-col w-category">{{ project.category }}</div>
+                <div class="w-col w-year" style="text-align: right;">{{ project.year }}</div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="certificates">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-num">06</span>
+            <h2 class="section-title">Certifications &amp; Awards</h2>
+        </div>
+        
+        <div class="cert-grid">
+            {% for cert in certificates %}
+            <div class="cert-card">
+                <div class="cert-img-container">
+                    <img src="{{ cert.image }}" alt="{{ cert.title }}">
+                </div>
+                <div class="cert-info">
+                    <span class="cert-year">{{ cert.year }} &bull; {{ cert.issuer }}</span>
+                    <h3 class="cert-title">{{ cert.title }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="stats-section" class="stats-section section-padding">
+    <div class="container">
+        <div class="stats-grid">
+            {% for stat in stats %}
+            <div class="stat-box">
+                <span class="stat-number" data-target="{{ stat.value }}">0</span>
+                <span class="stat-label">{{ stat.label }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section-padding" id="contact" style="border-top: 1px solid var(--border); background: var(--card-bg);">
+    <div class="container about-grid" style="align-items: center;">
+        <div class="content-column">
+            <h2 class="display-text" style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -1px;">Let's secure <br> together.</h2>
+            <p class="hero-desc" style="margin-top: 20px;">Open for new opportunities and exciting projects. Feel free to reach out.</p>
+            <a href="mailto:{{ profile.email }}" class="btn-primary magnetic" style="display: inline-block; margin-top: 10px;">Say Hello</a>
+        </div>
+        <div class="content-column">
+            <div class="time-widget-box">
+                <div class="widget-header">
+                    <span class="widget-label"><i class="fa-regular fa-clock"></i> LOCAL TIME</span>
+                    <span class="widget-location">Indonesia</span>
+                </div>
+                <div class="time-display" id="localTime">00:00:00</div>
+                <p class="widget-desc">I usually respond within 24 hours.</p>
+                
+                <div class="direct-contact">
+                    <a href="{{ profile.linkedin }}" target="_blank">LinkedIn <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="{{ profile.github }}" target="_blank">GitHub <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

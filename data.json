@@ -1,0 +1,158 @@
+{
+  "profile": {
+    "name": "Mark",
+    "role": "Cyber Security Student",
+    "email": "marckdekeyn@gmail.com",
+    "github": "https://github.com/marckdekeyn-source",
+    "linkedin": "https://www.linkedin.com/in/markus-kapitan-de-ornay-7411a7354",
+    "resume_link": "https://drive.google.com/file/d/1HrjiQgtrxBsvybI8HUGte6zMvIqCeUnQ/view",
+    "about": "I am a Cyber Security student at Universitas Amikom Yogyakarta with a strong passion for Offensive Security. My interests include Vulnerability Assessment & Penetration Testing (VAPT), Web Application Security Testing, Malware Analysis, Digital Forensics, and Capture The Flag (CTF). I continuously improve my practical skills through cybersecurity bootcamps, hands-on laboratories, personal security projects, and real-world practice."
+  },
+  "skills": [
+    "Cisco Packet Tracer",
+    "Burp Suite",
+    "Linux",
+    "OWASP ZAP",
+    "Autopsy",
+    "Nmap",
+    "Wireshark"
+  ],
+  "education": [
+    { "year": "2023 – Present", "degree": "Cyber Security Student", "school": "Universitas Amikom Yogyakarta" },
+    { "year": "2020 – 2023", "degree": "TKJ", "school": "SMKN 1 Larantuka" },
+    { "year": "2017 – 2020", "degree": "", "school": "SMPN 1 Larantuka" },
+    { "year": "2011 – 2017", "degree": "", "school": "SD Inpress Pohon Bao" }
+  ],
+  "experience": [
+    {
+      "year": "2026",
+      "role": "Cyber Sentinel Secure Bootcamp",
+      "company": "Focus: Penetration Testing · Web Penetration Testing · Security Fundamentals"
+    },
+    {
+      "year": "2025",
+      "role": "Cyber Security Bootcamp",
+      "company": "Hackpoint — Web Penetration Testing · OWASP Top 10 · DVWA"
+    },
+    {
+      "year": "2025",
+      "role": "Cyber Security Bootcamp",
+      "company": "IDNetworkers — Linux · Networking Security · Security Fundamentals"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "MotoGP Automation",
+      "category": "Automation",
+      "year": "2025",
+      "github_link": "https://github.com/marckdekeyn-source/MotoGP-Automation",
+      "description": "Automation project developed to simplify MotoGP-related workflows using scripting and automation."
+    },
+    {
+      "id": 2,
+      "title": "ByteStore",
+      "category": "Server",
+      "year": "2026",
+      "github_link": "https://github.com/marckdekeyn-source/ByteStore",
+      "description": "Modern E-Commerce Web Server deployment on Ubuntu Server featuring Apache, PHP, MySQL, SSH, FTP, and Linux administration."
+    },
+    {
+      "id": 3,
+      "title": "Flappy Bird Game",
+      "category": "Game",
+      "year": "2024",
+      "github_link": "https://github.com/LaOdhe16/Projek-Game-Flappy-Bird",
+      "description": "Browser-based Flappy Bird clone developed using JavaScript with responsive gameplay mechanics."
+    },
+    {
+      "id": 4,
+      "title": "HomeService",
+      "category": "Full-Stack",
+      "year": "2025",
+      "github_link": "https://github.com/LaOdhe16/HomeService",
+      "description": "Responsive web application for booking home services with a modern frontend interface."
+    },
+    {
+      "id": 5,
+      "title": "YARA Malware Detection Rules",
+      "category": "Cyber Security",
+      "year": "2025",
+      "github_link": "https://github.com/LaOdhe16/Yara-Rule",
+      "description": "Collection of custom YARA rules created to detect malware families through signature-based detection techniques."
+    }
+  ],
+  "certificates": [
+    {
+      "id": 1,
+      "title": "CCNA: Introduction to Networks",
+      "issuer": "Cisco Networking Academy",
+      "year": "2025",
+      "image": "/static/image/CCNA_Introduction.png"
+    },
+    {
+      "id": 2,
+      "title": "CCNA: Enterprise Networking, Security, and Automation",
+      "issuer": "Cisco Networking Academy",
+      "year": "2025",
+      "image": "/static/image/CCNA_Enterprise.png"
+    },
+    {
+      "id": 3,
+      "title": "CCNA: Switching, Routing, and Wireless Essentials",
+      "issuer": "Cisco Networking Academy",
+      "year": "2025",
+      "image": "/static/image/CCNA_Switching.png"
+    },
+    {
+      "id": 4,
+      "title": "Ethical Hacker",
+      "issuer": "Cisco Networking Academy",
+      "year": "2026",
+      "image": "/static/image/Ethical_Hacker.png"
+    },
+    {
+      "id": 5,
+      "title": "CTIGA",
+      "issuer": "Red Team Leaders",
+      "year": "2026",
+      "image": "/static/image/CTIGA.png"
+    },
+    {
+      "id": 6,
+      "title": "Cyber Security Bootcamp",
+      "issuer": "Hackpoint",
+      "year": "2025",
+      "image": "/static/image/Hackpoint_Bootcamp.png"
+    },
+    {
+      "id": 7,
+      "title": "CTF Competition",
+      "issuer": "Universitas Amikom Yogyakarta",
+      "year": "2025",
+      "image": "/static/image/CTF_Amikom.png"
+    }
+  ],
+  "services": [
+    {
+      "title": "Vulnerability Assessment & Penetration Testing",
+      "desc": "Identifying and exploiting security vulnerabilities in web applications and network infrastructure using industry-standard tools and methodologies.",
+      "icon": "fa-bug"
+    },
+    {
+      "title": "Digital Forensics & Malware Analysis",
+      "desc": "Conducting in-depth forensic investigations and analyzing malware to uncover threats, trace attacks, and support incident response.",
+      "icon": "fa-magnifying-glass"
+    },
+     {
+      "title": "Networking",
+      "desc": "Designing and analyzing network topologies, configuring devices, and implementing security controls across wired and wireless environments.",
+      "icon": "fa-network-wired"
+    }
+  ],
+  "stats": [
+    { "value": 5, "label": "Projects Delivered" },
+    { "value": 7, "label": "Certifications" },
+    { "value": 1, "label": "Years Experience" }
+  ]
+}
