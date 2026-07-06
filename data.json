@@ -47,39 +47,87 @@
       "category": "Automation",
       "year": "2025",
       "github_link": "https://github.com/marckdekeyn-source/MotoGP-Automation",
-      "description": "Automation project developed to simplify MotoGP-related workflows using scripting and automation."
+      "live_demo": null,
+      "description": "Python-based automation testing framework using Selenium to automatically test the MotoGP website, built with a clean, easy-to-extend project structure.",
+      "tech": ["Python", "Selenium", "Pytest", "Automation Testing"],
+      "icon": "fa-robot"
     },
     {
       "id": 2,
-      "title": "ByteStore",
-      "category": "Server",
+      "title": "HeaderGuard",
+      "category": "Cybersecurity",
       "year": "2026",
-      "github_link": "https://github.com/marckdekeyn-source/ByteStore",
-      "description": "Modern E-Commerce Web Server deployment on Ubuntu Server featuring Apache, PHP, MySQL, SSH, FTP, and Linux administration."
+      "github_link": "https://github.com/marckdekeyn-source/HeaderGuard",
+      "live_demo": null,
+      "description": "A website security header analyzer that inspects a site's HTTP security headers, flags misconfigurations, and provides recommendations based on modern security best practices.",
+      "tech": ["Python", "FastAPI", "JavaScript", "HTML", "CSS", "Cybersecurity"],
+      "icon": "fa-shield-halved"
     },
     {
       "id": 3,
-      "title": "Flappy Bird Game",
-      "category": "Game",
-      "year": "2024",
-      "github_link": "https://github.com/LaOdhe16/Projek-Game-Flappy-Bird",
-      "description": "Browser-based Flappy Bird clone developed using JavaScript with responsive gameplay mechanics."
+      "title": "HomeService",
+      "category": "Web Development",
+      "year": "2025",
+      "github_link": "https://github.com/LaOdhe16/HomeService",
+      "live_demo": null,
+      "description": "A home service booking website offering various household services through a web-based reservation system.",
+      "tech": ["Python", "Flask", "MySQL", "HTML", "CSS", "JavaScript"],
+      "icon": "fa-globe"
     },
     {
       "id": 4,
-      "title": "HomeService",
-      "category": "Full-Stack",
-      "year": "2025",
-      "github_link": "https://github.com/LaOdhe16/HomeService",
-      "description": "Responsive web application for booking home services with a modern frontend interface."
+      "title": "MalRev Reverse Engineering",
+      "category": "Malware Analysis",
+      "year": "2026",
+      "github_link": "https://github.com/marckdekeyn-source/MalRev-Reverse-Engineering",
+      "live_demo": null,
+      "description": "Reverse engineering and behavioral analysis documentation of a Linux ransomware sample (64-bit ELF), covering static & dynamic analysis, workflow, IOCs, encryption techniques, and YARA-based detection methods.",
+      "tech": ["Linux", "Ghidra", "GDB", "YARA", "Reverse Engineering", "Malware Analysis"],
+      "icon": "fa-virus"
     },
     {
       "id": 5,
-      "title": "YARA Malware Detection Rules",
-      "category": "Cyber Security",
+      "title": "YaraRule MalRev Detection",
+      "category": "Malware Analysis",
       "year": "2025",
-      "github_link": "https://github.com/LaOdhe16/Yara-Rule",
-      "description": "Collection of custom YARA rules created to detect malware families through signature-based detection techniques."
+      "github_link": "https://github.com/marckdekeyn-source/YaraRule_MalRev_Detection",
+      "live_demo": null,
+      "description": "A collection of custom YARA rules built from the MalRev analysis findings, designed to detect malware indicators through signature-based detection.",
+      "tech": ["YARA", "Cybersecurity", "Threat Detection"],
+      "icon": "fa-virus"
+    },
+    {
+      "id": 6,
+      "title": "Flappy Bird v2.5",
+      "category": "Game Development",
+      "year": "2026",
+      "github_link": "https://github.com/marckdekeyn-source/Game-Flappy-Bird_version-2.5",
+      "live_demo": null,
+      "description": "A Flappy Bird remake built with Python and Pygame, featuring clean architecture, a modern UI, and a professional project structure.",
+      "tech": ["Python", "Pygame", "Game Development"],
+      "icon": "fa-gamepad"
+    },
+    {
+      "id": 7,
+      "title": "ByteStore",
+      "category": "E-Commerce",
+      "year": "2026",
+      "github_link": "https://github.com/marckdekeyn-source/ByteStore",
+      "live_demo": null,
+      "description": "An e-commerce website deployed on a real Ubuntu Server, covering full-stack web development alongside hands-on server, database, and Linux configuration.",
+      "tech": ["Ubuntu Server", "Linux", "Apache/Nginx", "MySQL", "PHP", "HTML", "CSS", "JavaScript"],
+      "icon": "fa-cart-shopping"
+    },
+    {
+      "id": 8,
+      "title": "BITE (Bug Inspection & Testing Engine)",
+      "category": "Penetration Testing",
+      "year": "2026",
+      "github_link": "https://github.com/marckdekeyn-source/BITE",
+      "live_demo": null,
+      "description": "A modular, Python-based penetration testing framework built for beginners with a professional project structure, designed to be easy to extend with new security testing modules. Built for educational purposes and authorized penetration testing only.",
+      "tech": ["Python", "Cybersecurity", "Penetration Testing", "CLI", "Modular Architecture"],
+      "icon": "fa-user-secret"
     }
   ],
   "certificates": [
@@ -151,7 +199,7 @@
     }
   ],
   "stats": [
-    { "value": 5, "label": "Projects Delivered" },
+    { "value": 8, "label": "Projects Delivered" },
     { "value": 7, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]

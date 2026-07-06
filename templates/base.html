@@ -7,10 +7,19 @@
     <meta name="description" content="Cyber Security student specializing in Vulnerability Assessment & Penetration Testing (VAPT), Web Application Security Testing, Malware Analysis, Digital Forensics, and Capture The Flag (CTF).">
     <meta name="keywords" content="Cyber Security, VAPT, Penetration Testing, Web Security, Malware Analysis, Digital Forensics, Linux, Burp Suite, OWASP ZAP, Nmap, Wireshark, Networking, Capture The Flag">
     <link rel="icon" href="{{ url_for('static', filename='image/Sc.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=12.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=13.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+    <noscript><style>#introScreen{ display: none; }</style></noscript>
+
+    <div id="introScreen">
+        <div class="intro-terminal">
+            <span id="introText"></span><span class="intro-cursor" id="introCursor"></span>
+        </div>
+        <button id="introSkip" class="intro-skip" type="button">Skip Intro</button>
+    </div>
 
     <div class="ambient-glow"></div>
     <div class="noise-bg"></div>
@@ -32,6 +41,14 @@
 
     <button id="backToTop" class="back-to-top magnetic"><i class="fa-solid fa-arrow-up"></i></button>
 
+    <div id="lightboxOverlay">
+        <div class="lightbox-content">
+            <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Close preview"><i class="fa-solid fa-xmark"></i></button>
+            <img id="lightboxImg" src="" alt="Preview">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
     <main id="smooth-wrapper">
         <div id="smooth-content">
             
@@ -51,6 +68,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}?v=12.0"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}?v=13.0"></script>
 </body>
 </html>
