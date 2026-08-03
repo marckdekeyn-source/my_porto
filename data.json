@@ -5,7 +5,7 @@
     "email": "marckdekeyn@gmail.com",
     "github": "https://github.com/marckdekeyn-source",
     "linkedin": "https://www.linkedin.com/in/markus-kapitan-de-ornay-7411a7354",
-    "resume_link": "https://drive.google.com/file/d/10NcZa-7WPqH9hHlcT57LLRnD2GZSMxBD/view?usp=sharing",
+    "resume_link": "https://drive.google.com/file/d/1HrjiQgtrxBsvybI8HUGte6zMvIqCeUnQ/view",
     "about": "I am a Cyber Security student at Universitas Amikom Yogyakarta with a strong passion for Offensive Security. My interests include Vulnerability Assessment & Penetration Testing (VAPT), Web Application Security Testing, Malware Analysis, Digital Forensics, and Capture The Flag (CTF). I continuously improve my practical skills through cybersecurity bootcamps, hands-on laboratories, personal security projects, and real-world practice."
   },
   "skills": [
@@ -179,7 +179,14 @@
       "issuer": "Universitas Amikom Yogyakarta",
       "year": "2025",
       "image": "/static/image/CTF_Amikom.png"
-    }
+    },
+    {
+      "id": 8,
+      "title": "JEH",
+      "issuer": "X-code",
+      "year": "2026",
+      "image": "/static/image/JEH.png"
+    }    
   ],
   "services": [
     {
@@ -200,7 +207,7 @@
   ],
   "stats": [
     { "value": 8, "label": "Projects Delivered" },
-    { "value": 7, "label": "Certifications" },
+    { "value": 8, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
 }
