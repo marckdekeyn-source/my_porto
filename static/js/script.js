@@ -20,13 +20,13 @@
         "Loading Projects...",
         "Loading Certifications...",
         "Cybersecurity Student",
-        "Welcome to My Portfolio"
+        "Welcome to My Portofolio"
     ];
 
-    const TYPE_SPEED = 40;
-    const DELETE_SPEED = 30;
-    const HOLD_TIME = 500;
-    const GAP_TIME = 150;
+    const TYPE_SPEED = 20;
+    const DELETE_SPEED = 20;
+    const HOLD_TIME = 400;
+    const GAP_TIME = 140;
 
     let phraseIndex = 0;
     let charIndex = 0;
