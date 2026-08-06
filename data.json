@@ -182,11 +182,16 @@
     },
     {
       "id": 8,
-      "title": "JEH",
+      "title": "Junior Ethical Hacker",
       "issuer": "X-code",
       "year": "2026",
       "image": "/static/image/JEH.png"
-    }    
+    },
+    {
+      "id": 9,
+      "tittle": "Network Security"
+      "year": "2026"
+      "image": "/static/image/Network_Security.png"
   ],
   "services": [
     {
@@ -207,7 +212,7 @@
   ],
   "stats": [
     { "value": 8, "label": "Projects Delivered" },
-    { "value": 8, "label": "Certifications" },
+    { "value": 9, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
 }
