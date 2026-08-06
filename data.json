@@ -189,10 +189,11 @@
     },
     {
       "id": 9,
-      "tittle": "Network Security"
-      "year": "2026"
-      "image": "/static/image/Network_Security.png"
-    }
+      "title": "Network Security",
+      "issuer":"Cisco Networking Academy",
+      "year": "2026",
+      "image":"/static/image/Network_Security.png"
+      }
   ],
   "services": [
     {
