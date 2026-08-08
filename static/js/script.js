@@ -1,4 +1,4 @@
-// --- 0. INTRO SCREEN (Typewriter) ---
+// --- 0. INTRO SCREEN (Cursor Trail) ---
 (function initIntro() {
     const introScreen = document.getElementById('introScreen');
     if (!introScreen) return;
@@ -23,14 +23,11 @@
         "Welcome to My portfolio"
     ];
 
-    const TYPE_SPEED = 10;
-    const DELETE_SPEED = 10;
-    const HOLD_TIME = 300;
-    const GAP_TIME = 130;
+    const HOLD_TIME = 1100; // lama teks + garis full tampil
+    const FADE_TIME = 400;  // durasi fade in/out
+    const GAP_TIME = 150;   // jeda sebelum frasa berikutnya
 
     let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
     let finished = false;
     let timers = [];
 
@@ -44,40 +41,34 @@
         setTimeout(() => introScreen.remove(), 900);
     }
 
-   function tick() {
+    function showPhrase() {
         if (finished) return;
-        const currentPhrase = phrases[phraseIndex];
         const isLastPhrase = phraseIndex === phrases.length - 1;
 
-        if (!isDeleting) {
-            charIndex++;
-            introText.textContent = currentPhrase.substring(0, charIndex);
+        introText.textContent = phrases[phraseIndex];
 
-            if (charIndex === currentPhrase.length) {
-                if (isLastPhrase) {
-                    timers.push(setTimeout(finishIntro, 900));
-                    return;
-                }
-                isDeleting = true;
-                timers.push(setTimeout(tick, HOLD_TIME));
-                return;
-            }
-            timers.push(setTimeout(tick, TYPE_SPEED));
-        } else {
-            charIndex--;
-            introText.textContent = currentPhrase.substring(0, charIndex);
+        // reset lalu retrigger animasi CSS (fade + garis trail)
+        introText.classList.remove('intro-in', 'intro-out');
+        void introText.offsetWidth; // force reflow
+        introText.classList.add('intro-in');
 
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex++;
-                timers.push(setTimeout(tick, GAP_TIME));
-                return;
-            }
-            timers.push(setTimeout(tick, DELETE_SPEED));
+        if (isLastPhrase) {
+            timers.push(setTimeout(finishIntro, HOLD_TIME + 500));
+            return;
         }
+
+        timers.push(setTimeout(() => {
+            introText.classList.remove('intro-in');
+            introText.classList.add('intro-out');
+            timers.push(setTimeout(() => {
+                introText.classList.remove('intro-out');
+                phraseIndex++;
+                timers.push(setTimeout(showPhrase, GAP_TIME));
+            }, FADE_TIME));
+        }, HOLD_TIME));
     }
 
-    timers.push(setTimeout(tick, 400));
+    timers.push(setTimeout(showPhrase, 400));
 
     if (skipBtn) skipBtn.addEventListener('click', finishIntro);
 })();
