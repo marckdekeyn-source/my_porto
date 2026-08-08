@@ -16,11 +16,11 @@
     const skipBtn = document.getElementById('introSkip');
 
     const phrases = [
-        "Initializing Portofolio...",
+        "Initializing portfolio...",
         "Loading Projects...",
         "Loading Certifications...",
         "Cybersecurity Student",
-        "Welcome to My Portofolio"
+        "Welcome to My portfolio"
     ];
 
     const TYPE_SPEED = 10;
