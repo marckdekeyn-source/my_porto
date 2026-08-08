@@ -64,17 +64,49 @@ body.intro-active { overflow: hidden; height: 100vh; }
     letter-spacing: 2px;
     font-weight: bold;
     min-height: 1.6em;
-    display: flex; align-items: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px;
     padding: 0 20px;
     text-align: center;
     text-transform: uppercase;
 }
 
-.intro-cursor {
-    display: inline-block; width: 10px; height: 1.3em; margin-left: 4px;
-    background: var(--accent); box-shadow: 0 0 10px var(--accent-glow);
-    animation: introBlink 0.9s steps(1) infinite;
+#introText { opacity: 0; transform: translateY(10px); display: inline-block; }
+#introText.intro-in  { animation: introTextIn 0.4s ease forwards; }
+#introText.intro-out { animation: introTextOut 0.4s ease forwards; }
+
+@keyframes introTextIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes introTextOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-10px); }
+}
+
+/* garis horizontal "jejak" di bawah teks */
+.intro-line-trail {
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-glow);
+}
+#introText.intro-in ~ .intro-line-trail {
+    animation: introLineIn 0.5s ease forwards 0.15s;
+}
+#introText.intro-out ~ .intro-line-trail {
+    animation: introLineOut 0.35s ease forwards;
+}
+@keyframes introLineIn {
+    from { width: 0;     opacity: 0.4; }
+    to   { width: 140px; opacity: 1; }
+}
+@keyframes introLineOut {
+    from { width: 140px; opacity: 1; }
+    to   { width: 0;     opacity: 0; }
+}
+
 @keyframes introBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
 .intro-skip {
@@ -233,9 +265,29 @@ body.lightbox-open { overflow: hidden; }
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
 .cert-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: 0.4s ease; padding: 15px; }
 .cert-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.2); background: var(--card-hover); }
-.cert-img-container { width: 100%; aspect-ratio: 16/11; overflow: hidden; border-radius: 8px; cursor: pointer; }
+.cert-img-container { position: relative; width: 100%; aspect-ratio: 16/11; overflow: hidden; border-radius: 8px; cursor: pointer; }
 .cert-img-container img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: filter 0.5s ease, transform 0.5s ease; }
 .cert-card:hover .cert-img-container img { filter: brightness(1); transform: scale(1.05); }
+
+.cert-view-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(4, 4, 4, 0.55);
+    backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+    color: #ffffff; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+.cert-img-container:hover .cert-view-overlay { opacity: 1; }
+
+.cert-view-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.08);
+}
+
 .cert-info { padding: 25px 15px 10px 15px; }
 .cert-year { display: block; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
 .cert-title { font-size: 1.3rem; font-family: 'Inter'; font-weight: 600; color: var(--text); }
