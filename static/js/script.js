@@ -23,9 +23,9 @@
         "Welcome to My portfolio"
     ];
 
-    const HOLD_TIME = 1100; // lama teks + garis full tampil
-    const FADE_TIME = 400;  // durasi fade in/out
-    const GAP_TIME = 150;   // jeda sebelum frasa berikutnya
+    const HOLD_TIME = 1000; // lama teks + garis full tampil
+    const FADE_TIME = 350;  // durasi fade in/out
+    const GAP_TIME = 130;   // jeda sebelum frasa berikutnya
 
     let phraseIndex = 0;
     let finished = false;
