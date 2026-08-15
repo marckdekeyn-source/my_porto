@@ -190,10 +190,17 @@
     {
       "id": 9,
       "title": "Network Security",
-      "issuer":"Cisco Networking Academy",
+      "issuer": "Cisco Networking Academy",
       "year": "2026",
-      "image":"/static/image/Network_Security.png"
-      }
+      "image": "/static/image/Network_Security.png"
+      },
+    {
+      "id": 10,
+      "title": "CTF Competition",
+      "issuer": "Esport Kapolri Cup",
+      "year": "2026",
+      "image": "/static/image/CTF_Polri.png"
+    }
   ],
   "services": [
     {
@@ -214,7 +221,7 @@
   ],
   "stats": [
     { "value": 8, "label": "Projects Delivered" },
-    { "value": 9, "label": "Certifications" },
+    { "value": 10, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
 }
