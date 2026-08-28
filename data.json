@@ -137,6 +137,7 @@
       "github_link": null,
       "live_demo": null,
       "medium_link": "https://medium.com/@marckdekeyn/bandit-overthewire-b33fbffb4c55?sharedUserId=marckdekeyn",
+      "description": "A storytelling-style cybersecurity writeup documenting my journey through OverTheWire Bandit from Level 0 to 33. Covering Linux fundamentals, SSH, file analysis, compression, networking, cron jobs, privilege escalation concepts, and problem-solving through hands-on challenges.",
       "tech": ["Linux", "SSH", "Bash", "Cron Jobs", "Netcat", "OpenSSL", "CTF", "Writeup"],
       "icon": "fa-terminal"
     }
@@ -231,7 +232,7 @@
     }
   ],
   "stats": [
-    { "value": 8, "label": "Projects Delivered" },
+    { "value": 9, "label": "Projects Delivered" },
     { "value": 10, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
