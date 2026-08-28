@@ -128,6 +128,17 @@
       "description": "A modular, Python-based penetration testing framework built for beginners with a professional project structure, designed to be easy to extend with new security testing modules. Built for educational purposes and authorized penetration testing only.",
       "tech": ["Python", "Cybersecurity", "Penetration Testing", "CLI", "Modular Architecture"],
       "icon": "fa-user-secret"
+    },
+    {
+      "id": 9,
+      "title": "OverTheWire Bandit Writeup (0–33)",
+      "category": "Cybersecurity",
+      "year": "2026",
+      "github_link": null,
+      "live_demo": null,
+      "medium_link": "https://medium.com/@marckdekeyn/bandit-overthewire-b33fbffb4c55?sharedUserId=marckdekeyn",
+      "tech": ["Linux", "SSH", "Bash", "Cron Jobs", "Netcat", "OpenSSL", "CTF", "Writeup"],
+      "icon": "fa-terminal"
     }
   ],
   "certificates": [
