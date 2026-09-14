@@ -212,6 +212,13 @@
       "issuer": "Esport Kapolri Cup",
       "year": "2026",
       "image": "/static/image/CTF_Polri.png"
+    },
+    {
+      "id": 10,
+      "tittle": "Cyber Sentinel Secure Bootcamp",
+      "issuer": "Cyber Sentinel Secure",
+      "year": "2026",
+      "image": "/static/image/CSS.png"
     }
   ],
   "services": [
@@ -233,7 +240,7 @@
   ],
   "stats": [
     { "value": 9, "label": "Projects Delivered" },
-    { "value": 10, "label": "Certifications" },
+    { "value": 11, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
 }
