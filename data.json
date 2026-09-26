@@ -223,7 +223,7 @@
     {
       "id": 12,
       "title" "Networking Competition",
-      "Issuer": "E-time",
+      "issuer": "E-time",
       "year": "2026",
       "image": "/static/image/Networking.png"
     }
