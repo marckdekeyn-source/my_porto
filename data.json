@@ -225,7 +225,7 @@
       "title" "Networking Competition",
       "Issuer": "E-time",
       "year": "2026",
-      "image": "static/image/Networking.png"
+      "image": "/static/image/Networking.png"
     }
   ],
   "services": [
