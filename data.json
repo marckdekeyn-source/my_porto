@@ -222,7 +222,7 @@
     },
     {
       "id": 12,
-      "title" "Networking Competition",
+      "title:" "Networking Competition",
       "issuer": "E-time",
       "year": "2026",
       "image": "/static/image/Networking.png"
