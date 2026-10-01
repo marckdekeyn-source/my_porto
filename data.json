@@ -61,7 +61,7 @@
       "live_demo": null,
       "description": "A website security header analyzer that inspects a site's HTTP security headers, flags misconfigurations, and provides recommendations based on modern security best practices.",
       "tech": ["Python", "FastAPI", "JavaScript", "HTML", "CSS", "Cybersecurity"],
-      "icon": "fa-shield-halved"
+      "image": "/static/image/HeaderGuard.png"
     },
     {
       "id": 3,
@@ -83,7 +83,7 @@
       "live_demo": null,
       "description": "Reverse engineering and behavioral analysis documentation of a Linux ransomware sample (64-bit ELF), covering static & dynamic analysis, workflow, IOCs, encryption techniques, and YARA-based detection methods.",
       "tech": ["Linux", "Ghidra", "GDB", "YARA", "Reverse Engineering", "Malware Analysis"],
-      "icon": "fa-virus"
+      "image": "/static/image/MalRev.png"
     },
     {
       "id": 5,
@@ -105,7 +105,7 @@
       "live_demo": null,
       "description": "A Flappy Bird remake built with Python and Pygame, featuring clean architecture, a modern UI, and a professional project structure.",
       "tech": ["Python", "Pygame", "Game Development"],
-      "icon": "fa-gamepad"
+      "image": "/static/image/Logo_Flappy Bird.png"
     },
     {
       "id": 7,
@@ -127,7 +127,7 @@
       "live_demo": null,
       "description": "A modular, Python-based penetration testing framework built for beginners with a professional project structure, designed to be easy to extend with new security testing modules. Built for educational purposes and authorized penetration testing only.",
       "tech": ["Python", "Cybersecurity", "Penetration Testing", "CLI", "Modular Architecture"],
-      "icon": "fa-user-secret"
+      "image": "/static/image/Logo_BITE.png"
     },
     {
       "id": 9,
@@ -139,7 +139,7 @@
       "medium_link": "https://medium.com/@marckdekeyn/bandit-overthewire-b33fbffb4c55?sharedUserId=marckdekeyn",
       "description": "A storytelling-style cybersecurity writeup documenting my journey through OverTheWire Bandit from Level 0 to 33. Covering Linux fundamentals, SSH, file analysis, compression, networking, cron jobs, privilege escalation concepts, and problem-solving through hands-on challenges.",
       "tech": ["Linux", "SSH", "Bash", "Cron Jobs", "Netcat", "OpenSSL", "CTF", "Writeup"],
-      "icon": "fa-terminal"
+      "image": "/static/image/OverTheWire.png"
     }
   ],
   "certificates": [
