@@ -92,7 +92,7 @@
       "year": "2025",
       "github_link": "https://github.com/marckdekeyn-source/YaraRule_MalRev_Detection",
       "live_demo": null,
-      "description": "A collection of custom YARA rules built from the MalRev analysis findings, designed to detect malware indicators through signature-based detection.",
+      "description": "A custom YARA rule built from the findings of the MalRev reverse engineering project, designed to detect the analyzed Linux ransomware sample through signature-based detection of its indicators.",
       "tech": ["YARA", "Cybersecurity", "Threat Detection"],
       "icon": "fa-virus"
     },
@@ -205,7 +205,7 @@
       "issuer": "Cisco Networking Academy",
       "year": "2026",
       "image": "/static/image/Network_Security.png"
-      },
+    },
     {
       "id": 10,
       "title": "CTF Competition",
@@ -239,7 +239,7 @@
       "desc": "Conducting in-depth forensic investigations and analyzing malware to uncover threats, trace attacks, and support incident response.",
       "icon": "fa-magnifying-glass"
     },
-     {
+    {
       "title": "Networking",
       "desc": "Designing and analyzing network topologies, configuring devices, and implementing security controls across wired and wireless environments.",
       "icon": "fa-network-wired"

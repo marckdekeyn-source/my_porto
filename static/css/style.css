@@ -235,7 +235,7 @@ body.lightbox-open { overflow: hidden; }
 .project-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
 .project-card:hover { transform: translateY(-8px); border-color: var(--accent-border); box-shadow: 0 25px 50px -25px var(--accent-glow); }
 
-.project-thumb { position: relative; width: 100%; aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent-dim) 0%, rgba(0,0,0,0.5) 100%); overflow: hidden; }
+.project-thumb { position: relative; width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--accent-dim) 0%, rgba(0,0,0,0.5) 100%); overflow: hidden; }
 .project-thumb i { font-size: 3.2rem; color: var(--accent); opacity: 0.85; transition: transform 0.4s ease, opacity 0.4s ease; }
 .project-card:hover .project-thumb i { transform: scale(1.15) rotate(-4deg); opacity: 1; }
 
@@ -382,3 +382,17 @@ footer { padding: 80px 0; text-align: center; border-top: 1px solid var(--border
 @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal-left, .reveal-right, .reveal-zoom { opacity: 1; transform: none; transition: none; }
 }
+
+/* --- Project thumbnail image (menggantikan icon) --- */
+.project-thumb .project-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;            /* seluruh logo terlihat, tidak terpotong */
+    padding: 30px 6px 6px;        /* atas sedikit lebih besar supaya tidak tertimpa badge */
+    box-sizing: border-box;
+    transition: transform 0.5s ease;
+}
+.project-card:hover .project-thumb .project-img { transform: scale(1.06); }
+.project-thumb .project-badge, .project-thumb .project-year { z-index: 2; }

@@ -122,7 +122,11 @@
                 <div class="project-thumb">
                     <span class="project-badge">{{ project.category }}</span>
                     <span class="project-year">{{ project.year }}</span>
+                    {% if project.image %}
+                    <img src="{{ project.image | urlencode }}" alt="{{ project.title }}" class="project-img" loading="lazy">
+                    {% elif project.icon %}
                     <i class="fa-solid {{ project.icon }}"></i>
+                    {% endif %}
                 </div>
                 <div class="project-body">
                     <h3 class="project-title">{{ project.title }}</h3>
