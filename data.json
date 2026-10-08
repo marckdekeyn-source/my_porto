@@ -226,6 +226,13 @@
       "issuer": "E-time",
       "year": "2026",
       "image": "/static/image/Networking.png"
+    },
+    {
+      "id": 13,
+      "title": "CWL Certified Cyber Security Analyst (C3SA)",
+      "issuer": "CyberWarFare Labs",
+      "year": "2026",
+      "image": "/static/image/C3SA.png"
     }
   ],
   "services": [
@@ -247,7 +254,7 @@
   ],
   "stats": [
     { "value": 9, "label": "Projects Delivered" },
-    { "value": 12, "label": "Certifications" },
+    { "value": 13, "label": "Certifications" },
     { "value": 1, "label": "Years Experience" }
   ]
 }
