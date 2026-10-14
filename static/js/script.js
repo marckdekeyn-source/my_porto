@@ -1,4 +1,72 @@
-// --- 0. INTRO SCREEN (Cursor Trail) ---
+// --- 0. INTRO SCREEN (Text Scramble Effect) ---
+class TextScramble {
+    constructor(el) {
+        this.el = el;
+        // Karakter acak (sengaja tanpa < > & supaya aman dipakai di innerHTML)
+        this.chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^*+=?/|{}[]-_';
+        this.frameRequest = null;
+        this.update = this.update.bind(this);
+    }
+
+    randomChar() {
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+
+    escapeHTML(ch) {
+        return ch === '&' ? '&amp;' : ch === '<' ? '&lt;' : ch === '>' ? '&gt;' : ch;
+    }
+
+    // Morph teks yang sedang tampil -> newText. Mengembalikan Promise yang resolve saat selesai.
+    setText(newText) {
+        const oldText = this.el.textContent;
+        const length = Math.max(oldText.length, newText.length);
+
+        return new Promise(resolve => {
+            this.resolve = resolve;
+            this.queue = [];
+            for (let i = 0; i < length; i++) {
+                const start = Math.floor(Math.random() * 4);        // kapan mulai diacak (frame)
+                const end = start + 12 + Math.floor(Math.random() * 4); // kapan jadi huruf asli
+                this.queue.push({ from: oldText[i] || '', to: newText[i] || '', start, end, char: '' });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.t0 = null;
+            this.frameRequest = requestAnimationFrame(this.update);
+        });
+    }
+
+    update(now) {
+        if (this.t0 === null) this.t0 = now;
+        // Berbasis waktu (setara 60 fps) supaya kecepatan sama di layar 60Hz maupun 120Hz
+        const frame = (now - this.t0) / 16.67;
+
+        let html = '';
+        let complete = 0;
+        for (const item of this.queue) {
+            if (frame >= item.end) {
+                complete++;
+                html += this.escapeHTML(item.to);
+            } else if (frame >= item.start) {
+                if (!item.char || Math.random() < 0.8) item.char = this.randomChar();
+                html += `<span class="dud">${this.escapeHTML(item.char)}</span>`;
+            } else {
+                html += this.escapeHTML(item.from);
+            }
+        }
+        this.el.innerHTML = html;
+
+        if (complete === this.queue.length) {
+            this.resolve();
+        } else {
+            this.frameRequest = requestAnimationFrame(this.update);
+        }
+    }
+
+    stop() {
+        cancelAnimationFrame(this.frameRequest);
+    }
+}
+
 (function initIntro() {
     const introScreen = document.getElementById('introScreen');
     if (!introScreen) return;
@@ -15,62 +83,192 @@
     const introText = document.getElementById('introText');
     const skipBtn = document.getElementById('introSkip');
 
-    const phrases = [
-        "Initializing portfolio...",
-        "Loading Projects...",
-        "Loading Certifications...",
-        "Cybersecurity Student",
-        "Welcome to My portfolio"
+    // Urutan teks: tiap item di-scramble dari teks sebelumnya.
+    // Mudah dikustomisasi: ubah text / hold (ms jeda setelah teks terbentuk).
+    const START_TEXT = 'INITIALIZING SYSTEM...', hold = 50000;
+    const sequence = [
+        { text: 'M4LW4R3 4N4LY1S'},
+        { text: 'N3TW0RK S3CUR1TY'},
+        { text: 'BUG HUNT1NG'},
+        { text: 'C4PTUR3 TH3 FL4G'},
+        { text: 'CYB3R SECUR1TY'},
+        { text: 'P3N3TRATI0N TEST1NG'},
+        { text: 'VULNERABILITY ASS3SM3NT'},
+        { text: 'LOADING PORTFOLIO'},
+        { text: 'WELCOME TO MY PORTFOLIO', hold: 900 },
+        { text: 'M4RKU5 K4P1T4N D3 0RN4Y', hold: 1100 }
     ];
 
-    const HOLD_TIME = 900; // lama teks + garis full tampil
-    const FADE_TIME = 250;  // durasi fade in/out
-    const GAP_TIME = 100;   // jeda sebelum frasa berikutnya
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    let phraseIndex = 0;
     let finished = false;
     let timers = [];
+    const fx = new TextScramble(introText);
 
     function finishIntro() {
         if (finished) return;
         finished = true;
         timers.forEach(t => clearTimeout(t));
+        fx.stop();
         sessionStorage.setItem('bite_intro_shown', '1');
         introScreen.classList.add('intro-hidden');
         document.body.classList.remove('intro-active');
         setTimeout(() => introScreen.remove(), 900);
     }
 
-    function showPhrase() {
-        if (finished) return;
-        const isLastPhrase = phraseIndex === phrases.length - 1;
+    const sleep = ms => new Promise(resolve => timers.push(setTimeout(resolve, ms)));
 
-        introText.textContent = phrases[phraseIndex];
-
-        // reset lalu retrigger animasi CSS (fade + garis trail)
-        introText.classList.remove('intro-in', 'intro-out');
-        void introText.offsetWidth; // force reflow
-        introText.classList.add('intro-in');
-
-        if (isLastPhrase) {
-            timers.push(setTimeout(finishIntro, HOLD_TIME + 500));
-            return;
+    async function run() {
+        await sleep(400);
+        for (const step of sequence) {
+            if (finished) return;
+            await fx.setText(step.text);
+            if (finished) return;
+            await sleep(step.hold);
         }
-
-        timers.push(setTimeout(() => {
-            introText.classList.remove('intro-in');
-            introText.classList.add('intro-out');
-            timers.push(setTimeout(() => {
-                introText.classList.remove('intro-out');
-                phraseIndex++;
-                timers.push(setTimeout(showPhrase, GAP_TIME));
-            }, FADE_TIME));
-        }, HOLD_TIME));
+        finishIntro();
     }
 
-    timers.push(setTimeout(showPhrase, 400));
+    // Fade-in sekali saja (animasi + garis trail dari CSS lama), lalu teks diacak oleh JS
+    introText.textContent = START_TEXT;
+    introText.classList.add('intro-in');
+
+    if (reduceMotion) {
+        // Aksesibilitas: tanpa animasi acak, langsung tampilkan teks akhir
+        introText.textContent = sequence[sequence.length - 1].text;
+        timers.push(setTimeout(finishIntro, 1200));
+    } else {
+        run();
+    }
 
     if (skipBtn) skipBtn.addEventListener('click', finishIntro);
+})();
+
+// --- 0.2 MATRIX TEXT RAIN BACKGROUND (Canvas) ---
+(function initMatrixRain() {
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // ====== KONFIGURASI (silakan diutak-atik) ======
+    const CFG = {
+        chars: 'abcdefghijklmnopqrstuvwxyz0123456789', // huruf + angka
+        fontSize: 18,         // ukuran huruf (desktop)
+        fontSizeMobile: 14,   // ukuran huruf (layar < 768px)
+        fps: 30,              // frame per detik animasi hujan
+        fade: 0.08,           // 0.03 = ekor panjang | 0.15 = ekor pendek
+        respawn: 0.975,       // makin kecil = aliran baru muncul makin sering
+        minSpeed: 0.45,       // kecepatan jatuh minimum (baris/frame)
+        maxSpeed: 1.0,        // kecepatan jatuh maksimum (baris/frame)
+        color: '#00d836',     // warna huruf (ekor)
+        headColor: '#d9ffe2', // warna huruf paling depan (kepala aliran)
+        bg: '#070707'         // harus sama dengan --bg di CSS
+    };
+
+    const fadeColor = `rgba(7, 7, 7, ${CFG.fade})`;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let w = 0, h = 0, fontSize = CFG.fontSize, cols = 0, maxRows = 0;
+    let rows = [], lastRow = [], lastChar = [], speeds = [];
+    let rafId = null, lastTime = 0;
+    const interval = 1000 / CFG.fps;
+
+    const randChar = () => CFG.chars[Math.floor(Math.random() * CFG.chars.length)];
+    const randSpeed = () => CFG.minSpeed + Math.random() * (CFG.maxSpeed - CFG.minSpeed);
+
+    function setup() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth;
+        h = window.innerHeight;
+        fontSize = w < 768 ? CFG.fontSizeMobile : CFG.fontSize;
+
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        canvas.style.width = w + 'px';
+        canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.font = `${fontSize}px "Courier New", Consolas, monospace`;
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = CFG.bg;
+        ctx.fillRect(0, 0, w, h);
+
+        cols = Math.ceil(w / fontSize);
+        maxRows = Math.ceil(h / fontSize);
+        rows = []; lastRow = []; lastChar = []; speeds = [];
+        for (let i = 0; i < cols; i++) {
+            rows[i] = -Math.random() * maxRows; // posisi awal acak di atas layar -> aliran tidak serempak
+            lastRow[i] = -1;
+            lastChar[i] = '';
+            speeds[i] = randSpeed();
+        }
+    }
+
+    function tick() {
+        // Pudarkan frame sebelumnya -> menghasilkan efek ekor yang memudar
+        ctx.fillStyle = fadeColor;
+        ctx.fillRect(0, 0, w, h);
+
+        for (let i = 0; i < cols; i++) {
+            rows[i] += speeds[i];
+            const row = Math.floor(rows[i]);
+
+            if (row !== lastRow[i] && row >= 0 && row <= maxRows) {
+                const x = i * fontSize;
+
+                // Kepala sebelumnya (putih kehijauan) diubah jadi hijau biasa
+                if (lastRow[i] >= 0) {
+                    const py = lastRow[i] * fontSize;
+                    ctx.fillStyle = CFG.bg;
+                    ctx.fillRect(x, py, fontSize, fontSize);
+                    ctx.fillStyle = CFG.color;
+                    ctx.fillText(lastChar[i], x, py);
+                }
+
+                // Kepala baru
+                const ch = randChar();
+                ctx.fillStyle = CFG.headColor;
+                ctx.fillText(ch, x, row * fontSize);
+                lastChar[i] = ch;
+                lastRow[i] = row;
+            }
+
+            // Sudah lewat bawah layar -> peluang untuk mulai lagi dari atas
+            if (rows[i] > maxRows && Math.random() > CFG.respawn) {
+                rows[i] = -Math.random() * 10;
+                lastRow[i] = -1;
+                speeds[i] = randSpeed();
+            }
+        }
+    }
+
+    function loop(t) {
+        rafId = requestAnimationFrame(loop);
+        if (t - lastTime < interval) return;
+        lastTime = t - ((t - lastTime) % interval);
+        tick();
+    }
+
+    // Untuk prefers-reduced-motion: gambar satu "foto" statis, tanpa animasi
+    function snapshot() {
+        for (let i = 0; i < 120; i++) tick();
+    }
+
+    setup();
+    if (reduceMotion) snapshot();
+    else rafId = requestAnimationFrame(loop);
+
+    // Resize: abaikan perubahan tinggi kecil (address bar mobile naik-turun) supaya hujan tidak reset
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth !== w || window.innerHeight > h) {
+                setup();
+                if (reduceMotion) snapshot();
+            }
+        }, 150);
+    });
 })();
 
 // --- 0.5 HERO ROLE TYPEWRITER (Loop tanpa henti) ---

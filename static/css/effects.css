@@ -1,0 +1,60 @@
+/* =========================================================
+   EFFECTS.CSS  —  Matrix Rain background + Text Scramble intro
+   Dimuat SETELAH style.css, jadi aturan di sini menimpa yang lama.
+   ========================================================= */
+
+:root {
+    /* Makin kecil = hujan huruf makin redup (konten makin mudah dibaca) */
+    --matrix-opacity: 0.55;
+}
+
+/* --- MATRIX CANVAS (background) --- */
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;            /* di belakang semua konten */
+    pointer-events: none;
+    opacity: var(--matrix-opacity);
+}
+
+/* --- INTRO: Text Scramble --- */
+#introText { white-space: pre-wrap; }          /* spasi tidak "menghilang" saat huruf diacak */
+#introText .dud { opacity: 0.45; }             /* huruf yang masih acak dibuat lebih redup */
+
+@media (max-width: 600px) {
+    .intro-terminal { font-size: 1.15rem; letter-spacing: 1px; }
+}
+
+/* --- NAV & SOCIAL ---
+   mix-blend-mode: difference membuat warna berubah jadi magenta saat
+   huruf hijau lewat di belakangnya. Karena web sudah gelap semua, dimatikan. */
+.nav, .social-fixed { mix-blend-mode: normal; }
+
+/* --- KEBACAAN KONTEN DI ATAS MATRIX ---
+   Kartu dibuat lebih gelap + blur supaya teks tidak "bertabrakan" dengan huruf hijau. */
+.clean-card,
+.project-card,
+.cert-card,
+.time-widget-box,
+.status-badge {
+    background: rgba(7, 7, 7, 0.72);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+.clean-card:hover,
+.cert-card:hover {
+    background: rgba(12, 18, 12, 0.82);
+}
+
+/* Section dengan background tipis -> sedikit digelapkan agar teks panjang tetap jelas */
+#background,
+#contact {
+    background: rgba(7, 7, 7, 0.55) !important;
+}
+
+/* Bayangan lembut di belakang teks (specificity 0 via :where, jadi tidak
+   menimpa text-shadow glow yang sudah ada di .glow-text / .stat-number) */
+:where(.container) :where(h1, h2, h3, h4, p, li, span) {
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.9);
+}
